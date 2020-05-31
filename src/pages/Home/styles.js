@@ -8,7 +8,7 @@ export const FormGroup = styled.div`
     margin-bottom: 8px;
   }
   
-  span:last-child {
+  div:last-child {
     margin-top: 8px;
     color: red;
     font-size: 14px;

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Formik } from 'formik';
-// import PropTypes from 'prop-types';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 
 import { FormGroup } from './styles';
 
@@ -48,58 +49,34 @@ export default function Home() {
         onSubmit={onSubmit}
       >
         {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
           isSubmitting,
           isValid,
         }) => (
-          <form onSubmit={handleSubmit}>
+          <Form>
             <FormGroup>
               <label htmlFor="email">
                 <span>E-mail</span>
 
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={values.email}
-                  autoComplete="new-password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
+                <Field type="email" name="email" />
               </label>
 
-              <span>{errors.email && touched.email && errors.email}</span>
+              <ErrorMessage name="email" component="div" />
             </FormGroup>
 
             <FormGroup>
               <label htmlFor="password">
                 <span>Password</span>
 
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={values.password}
-                  autoComplete="new-password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
+                <Field type="password" name="password" />
               </label>
 
-              <span>{errors.password && touched.password && errors.password}</span>
+              <ErrorMessage name="password" component="div" />
             </FormGroup>
 
             <button type="submit" disabled={isSubmitting || !isValid}>Submit</button>
-          </form>
+          </Form>
         )}
       </Formik>
     </div>
   );
 }
-
-// Index.propTypes = {};
